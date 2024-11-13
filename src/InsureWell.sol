@@ -191,6 +191,15 @@ contract InsureWell is ReentrancyGuard, Pausable {
         return policy.isActive && (block.timestamp < policy.startTime + (policy.duration * SECONDS_PER_YEAR));
     }
 
+
+    function pause() external onlyOwner {
+    _pause();
+}
+
+function unpause() external onlyOwner {
+    _unpause();
+}
+
     // Contract Status Functions
     /// @notice Returns the contract's status and important metrics
     function getContractStatus() external view returns (
